@@ -1,18 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { createMuiTheme } from '@material-ui/core/styles'
+import { CssBaseline, Container } from '@material-ui/core'
 import { ThemeProvider } from '@material-ui/styles'
 
+import NavTop from './components/navigation/NavTop'
 import Projects from './pages/Projects'
 import './App.css';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#4db6ac'
+      main: '#456990'
     },
     secondary: {
-      main: '#fff176'
+      main: '#EF767A'
     }
   }
 })
@@ -20,11 +22,17 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={ theme }>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/projects" component={ Projects.container }/>  
-        </Switch>
-      </BrowserRouter>
+      <React.Fragment>
+        <CssBaseline />
+        <NavTop />
+        <Container>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/projects" component={ Projects.container }/>  
+            </Switch>
+          </BrowserRouter>
+        </Container>
+      </React.Fragment>
     </ThemeProvider>
   );
 }

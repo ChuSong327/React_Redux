@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
-import NavTop from '../../../components/navigation/NavTop' 
+import DisplayCard from "../../../components/surfaces/DisplayCard"
 
 class Projects extends Component {
+    componentDidMount() {
+        this.props.fetchProjects()
+    }
+
     render() {
+        const { list } = this.props
+        const isFetching = this.props.isFetching
         return (
             <div>
-                <NavTop />
-                <h1>This is the Projects Page</h1>
+                <DisplayCard 
+                    list={ list }
+                    isFetching={ isFetching }/>
             </div>
         )
     }
