@@ -6,7 +6,9 @@ import { ThemeProvider } from '@material-ui/styles'
 
 import NavTop from './components/navigation/NavTop'
 import Projects from './pages/Projects'
+import ModularFLow from './pages/ModularFlow'
 import './App.css';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -28,7 +30,8 @@ function App() {
         <Container>
           <BrowserRouter>
             <Switch>
-              <Route exact path="/projects" component={ Projects.container }/>  
+              <Route exact path='/projects' component={ Projects.container }/>  
+              <Route exact path='/modular_flow/:project_name/:project_version' component= { ModularFLow.container } />
             </Switch>
           </BrowserRouter>
         </Container>

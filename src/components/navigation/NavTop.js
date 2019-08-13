@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 import {
     AppBar,
     Toolbar, 
@@ -10,7 +12,9 @@ class NavTop extends Component {
         return (
             <AppBar position="static">
                 <Toolbar>
-                    <Typography>EEE</Typography>
+                    <a href='/projects' style={{ textDecoration: 'none', color: 'inherit'}}>
+                        <Typography>EEE</Typography>
+                    </a>
                 </Toolbar>
             </AppBar>
         )

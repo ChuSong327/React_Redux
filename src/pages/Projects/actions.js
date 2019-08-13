@@ -2,18 +2,27 @@ import * as type from './actionTypes'
 // This list will be replaced by data retrieved from server later on
 const list = [
     {
+        id: 'nebular',
+        version: 'v1',
         name: 'Nebula',
-        description:' Nebula is an application that...'
+        description:' Nebula is an application that...',
+       
     }, 
     {
+        id: 'oneview',
+        version: "v1",
         name: 'OneView',
-        description: 'OneView is an application that...'
+        description: 'OneView is an application that...',
     },
-    {
+    {   
+        id: 'myaccount',
+        version: 'v1',
         name: 'MyAccount',
         description: 'MyAccount is an application that...'
     },
     {
+        id: 'omni_portal',
+        version: 'v1',
         name: 'OmniPortal',
         description: 'OmniPortal is an application that...'
     }

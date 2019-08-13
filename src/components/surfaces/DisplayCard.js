@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 import { 
     makeStyles, 
     Grid,
@@ -6,26 +8,31 @@ import {
     CardHeader,
     CardMedia,
     CardContent,
-    CardActions,
-    Collapse, 
     Typography
 } from '@material-ui/core'
 
 const styles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
-        marginTop: 50
+        marginTop: 40
     },
     card: {
-        width: 250,
-        height: 200,
+        width: 260,
+        height: 250,
     },
     media: {
         height: 0,
-        paddingTop: '56.25%', //16:9
+        paddingTop: '46.25%', 
     },
     title: {
-        fontSize: 12
+        paddingBottom: 0
+    },
+    content: {
+        paddingTop: 10
+    },
+    link: {
+        textDecoration: 'none',
+        color: 'inherit'
     }
 }))
 
@@ -33,6 +40,7 @@ export default function DisplayCard(props) {
     const classes = styles() 
     const { list } = props
     const isFetching = props.isFetching
+    const path = props.path
     
     if(isFetching) {
         return (
@@ -41,35 +49,34 @@ export default function DisplayCard(props) {
     } 
     else {
         return (
-            <div className={ classes.root }>
-                <Grid 
-                    container
-                    spacing={1}
-                    direction='row'
-                    justify='space-between'
-                    align-items='center'>
-                    { list.map((project,index) => {
+            <Grid 
+                container
+                direction='row'
+                justify='space-between'
+                align-items='center'>
+                    { list.map((item,index) => {
                         return (
                             <Grid item key={index}>
-                                <Card className={ classes.card }>
-                                    <CardHeader 
-                                        className={ classes.title }
-                                        title={project.name}/>
-                                    <CardMedia 
-                                        className={ classes.media }
-                                        title={ project.name }
-                                        image='../../static/images/Nebula.png'/>
-                                    <Collapse>
-                                        <CardContent>
-                                            <Typography>Nebula is an application that...</Typography>
+                                <Link 
+                                    to={`/${path}/${item.name}/${item.version}`} 
+                                    className={ classes.link }>
+                                    <Card className={ classes.card }>
+                                        <CardMedia 
+                                            className={ classes.media }
+                                            title={ item.name }
+                                            image={require(`../../static/images/${item.name}.png`)}/>
+                                        <CardHeader 
+                                            title={item.name}
+                                            className={ classes.title } />
+                                        <CardContent className={ classes.content }>
+                                            <Typography>{ item.description} </Typography>
                                         </CardContent>
-                                    </Collapse>
-                                </Card>
+                                    </Card>
+                                </Link>
                             </Grid>
                         )
                     })}
-                </Grid>
-            </div>
+            </Grid>
         )
     }
 }
