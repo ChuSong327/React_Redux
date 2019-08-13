@@ -1,1 +1,1 @@
-### Frontend App to support EEE. 
+### Architect skeleton for React with Redux
